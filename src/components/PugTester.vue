@@ -1,8 +1,8 @@
 <template>
   <multipane class="pugtester fill-size" layout="vertical">
     <multipane class="code" layout="horizontal">
-      <div class="code-header">
-        Pug File
+      <div class="box-header">
+        pug
       </div>
       <div class="pug-code">
         <editor
@@ -13,21 +13,26 @@
         ></editor>
       </div>
       <multipane-resizer></multipane-resizer>
-      <div class="code-header">
-        JSON File
+      <div class="box-header">
+        json
       </div>
       <div class="json-code">
         <editor
           className="fill-size"
-          lang="{ name: 'javascript', json: true }"
+          :lang="{ name: 'javascript', json: true }"
           :code="jsonCode"
           :onChange="onJsonChange"
         ></editor>
       </div>
     </multipane>
     <multipane-resizer></multipane-resizer>
-    <div class="output">
-      OUTPUT
+    <div class="fill-size">
+      <div class="box-header">
+        result
+      </div>
+      <div class="output fill-size">
+        OUTPUT
+      </div>
     </div>
   </multipane>
 </template>
@@ -46,17 +51,17 @@ export default {
   data() {
     return {
       jsonCode: '{\n\t"message": "Welcome to my Pug Tester!"\n}',
-      pugCode: 'div(style="color:red;")\n\th1 { message }'
+      pugCode: 'div(style="color:red;")\n\th1 #{message}'
     }
   },
   methods: {
     onPugChange(newCode) {
-      console.log('pug changed:', newCode);
-      this.pugCode = newCode;
+      console.log('pug changed:', newCode)
+      this.pugCode = newCode
     },
     onJsonChange(newCode) {
-      console.log('json changed:', newCode);
-      this.jsonCode = newCode;
+      console.log('json changed:', newCode)
+      this.jsonCode = newCode
     }
   }
 }
@@ -71,10 +76,10 @@ export default {
 .code {
   width: 40%;
   min-width: 10%;
-  &-header {
-    padding: 5px;
-    background-color: #cccccc;
-  }
+}
+.box-header {
+  padding: 5px;
+  background-color: #cccccc;
 }
 .pug {
   &-code {
@@ -109,7 +114,7 @@ export default {
   }
   &:hover {
     &:before {
-      border-color: #999;
+      border-color: #737373;
     }
   }
 }
@@ -122,8 +127,8 @@ export default {
     left: 45%;
     margin-top: -20px;
     margin-left: -1.5px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
   }
 }
 .pugtester .code > .multipane-resizer {
@@ -135,8 +140,8 @@ export default {
     top: 45%;
     margin-left: -20px;
     margin-top: -1.5px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
   }
 }
 </style>

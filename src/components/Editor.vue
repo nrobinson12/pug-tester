@@ -10,15 +10,17 @@
 <script>
 import { codemirror } from 'vue-codemirror'
 import 'codemirror/mode/javascript/javascript.js'
+import 'codemirror/mode/pug/pug.js'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/addon/edit/closebrackets.js'
+import 'codemirror/theme/neat.css'
 
 export default {
   name: 'Editor',
   components: {
     codemirror
   },
-  props: ['code', 'className', 'onChange'],
+  props: ['code', 'lang', 'className', 'onChange'],
   data() {
     return {
       cmCode: this.code,
@@ -30,7 +32,8 @@ export default {
         linWrapping: true,
         autoCloseTags: true,
         autoCloseBrackets: true,
-        matchTags: false
+        matchTags: true,
+        theme: 'neat'
       }
     }
   }
